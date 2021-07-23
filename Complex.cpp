@@ -66,10 +66,11 @@ void Complex::conj() {
     re = -re;
 }
 
-int foo(){
+void foo(){
     Complex c;
     Complex* c2 = new Complex; //this object goes on the heap
     Complex c3(10, 5);
+
 }
 
 int main() {

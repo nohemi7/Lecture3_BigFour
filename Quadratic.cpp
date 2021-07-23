@@ -5,6 +5,7 @@ using namespace std;
 // This Class represents the numbers of the form: ax^2 + bx + c, quadratic polynomial
 
 class Quadratic {
+public:
     /*
     This initializes member vars using assignment statesments,
     But we will use initialization lists
@@ -75,12 +76,12 @@ class Quadratic {
     double getc() const { return c; }
 
     // friend QUadratic operator+(const Quadraatic &q1, const Quadratic &q2);
-    private:
-        double a;
-        double b;
-        double c;
+private:
+    double a;
+    double b;
+    double c;
 
-        const int y; //intialized in constructor through initializor list
+    const int y; //intialized in constructor through initializor list
 };
 
 // this function needs to be a "friend" of the Quadratic class
@@ -105,7 +106,7 @@ void foo() {
 }
 
 void foo2() {
-    Quadratic #p1 = new Quadratic(1,2,3);
+    Quadratic *p1 = new Quadratic(1,2,3);
     Quadratic p2 = *p1;
 }
 
@@ -120,7 +121,8 @@ int main() {
     q4 = q3; // calls the copy assignment operator
     // q4.operator=(q3) is really being called
 
-    cout << (q4+q3).evaluate(5) << endl;
+    cout << (q4+q3).evaluate(5) << endl; // is a new object created with this addition.
+        // is that why the destructor is called 5 times instead of the expected 4?
     // calling q4.operator+(q3);
     
     // when you pass along Quadratics by value, the copy constructor gets called!
@@ -128,4 +130,5 @@ int main() {
     // foo();
 
     // foo2();
+    return 0;
 }
